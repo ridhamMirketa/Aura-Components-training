@@ -1,0 +1,15 @@
+<aura:component>
+    <aura:attribute name="myInputObj" type="Object" />
+    <aura:attribute name="showBool" type="Boolean" default="false"/>
+    <div >
+        <lightning:input aura:id="name" label="name" type="text" required="true" />
+        <lightning:input aura:id="phone" label="Phone" type="number" required="true"  />
+        <lightning:input aura:id="address" label="Address" type="Address" required="true"/>
+        <lightning:input aura:id="email" label="email" type="email" required="true"/>
+        <div class="slds-m-vertical_large">
+            <lightning:button  onclick="{!c.handleSubmit}" label="submit"/>
+        </div>
+       
+    </div>
+    
+</aura:component>

@@ -1,0 +1,5 @@
+<aura:event type="COMPONENT" description="To get data from form component">
+    <aura:attribute name="inputVal" type="Object" />
+</aura:event>
+
+

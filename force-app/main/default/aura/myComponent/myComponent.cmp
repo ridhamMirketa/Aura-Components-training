@@ -1,0 +1,15 @@
+<aura:component>
+    <aura:attribute name="myInputObj" type="Object" />
+    <aura:attribute name="renderIf" type="boolean" default="false" />
+<div>
+    <div class="slds-m-horizontal_xx-large slds-m-vertical_xx-large slds-box">
+        <c:MyFirstForm showBool="{!v.renderIf}" myInputObj="{!v.myInputObj}"></c:MyFirstForm>
+    </div>
+    <div class="slds-m-horizontal_xx-large slds-m-vertical_xx-large">
+        <aura:if isTrue="{!v.renderIf}">
+            <c:InputTable myInputObj="{!v.myInputObj}"></c:InputTable>
+        </aura:if>
+    </div>
+    
+</div>
+</aura:component>	

@@ -1,0 +1,7 @@
+<aura:component>
+    <aura:handler name="EventHandler" event="c:EventHandler" action="{!c.parentComponentEvent}"/>
+    
+    <c:Form_event ></c:Form_event>
+    <c:InputTable_event aura:id="table_event"></c:InputTable_event>
+    
+</aura:component>	

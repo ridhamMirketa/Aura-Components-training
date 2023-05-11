@@ -1,0 +1,20 @@
+<aura:component>
+    <!-- attributes --> 
+    <aura:attribute name="data" type="List" />
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="myInputObj" type="Object"/>
+
+    <!-- handlers-->
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+    <aura:handler name="change" value="{!v.myInputObj}" action="{!c.handleInputChange}"/>
+
+    <!-- the container element determine the height of the datatable -->
+    <div style="height: 300px">
+        <lightning:datatable
+                keyField="id"
+                data="{! v.data }"
+                columns="{! v.columns }"
+                hideCheckboxColumn="true"/>
+    </div>
+</aura:component>
+

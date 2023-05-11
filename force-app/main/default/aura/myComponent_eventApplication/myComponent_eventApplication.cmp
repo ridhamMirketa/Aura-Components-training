@@ -1,0 +1,4 @@
+<aura:component>
+    <c:Form_eventApplication ></c:Form_eventApplication>
+    <c:InputTable_eventApplication ></c:InputTable_eventApplication>
+</aura:component>	

@@ -1,0 +1,4 @@
+<aura:event type="COMPONENT" description="event to send data to data table from parent" >
+    <aura:attribute name="inputValue" type="Object" />
+
+</aura:event>
