@@ -1,0 +1,8 @@
+<aura:component >
+   
+<c:formMethod aura:id="childformCmp"></c:formMethod>
+<div class="slds-m-vertical_large">
+    <lightning:button  onclick="{!c.handleSubmit}" label="submit"/>
+</div>
+<c:inputTableMethod aura:id="childTableCmp"></c:inputTableMethod>
+</aura:component>	
