@@ -1,0 +1,20 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:appHostable,lightning:actionOverRide">
+    <aura:attribute name="showAnnualRevenue" type="Boolean" default="true"/>
+    <aura:attribute name="isAccountNumberRequired" type="Boolean" default="false"/>
+
+    <lightning:navigation aura:id="navService"/>
+
+    <lightning:recordEditForm onload="{!c.checkType}" recordId="{!v.recordId}" objectApiName="Account" onsuccess="{!c.saveRecord}">
+        <lightning:messages />
+        <lightning:inputField aura:id="name" fieldName="Name" />
+        <lightning:inputField aura:id="accountNumber" fieldName="AccountNumber" required="{!v.isAccountNumberRequired}" />
+        <lightning:inputField aura:id="type" fieldName="Type" onchange="{!c.checkType}"/>
+        
+        <lightning:inputField aura:id="industry" fieldName="Industry" />
+    
+        <aura:if isTrue="{!v.showAnnualRevenue}">
+            <lightning:inputField aura:id="annualRevenue" fieldName="AnnualRevenue" />
+        </aura:if>
+        <lightning:button class="slds-m-top_small" variant="brand" type="submit" name="Save" label="Save"  />
+    </lightning:recordEditForm>
+</aura:component>
