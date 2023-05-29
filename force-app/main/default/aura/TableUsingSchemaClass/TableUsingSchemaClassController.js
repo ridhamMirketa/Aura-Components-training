@@ -131,6 +131,24 @@
         var isToggled = component.get("v.isToggled");
         component.set("v.isToggled", !isToggled);
         component.set("v.offSet",0);
+        let action = component.get("c.getAccountRecords");
+        action.setParams({
+            "offSet":0
+        });
+       
+        action.setCallback(this,function(response){
+            let state = response.getState();
+            console.log(state);
+            
+            if (state === "SUCCESS") {
+                // let newData=component.get("v.data");
+                // newData.push(response.getReturnValue());
+                // console.log(response.getReturnValue());
+                component.set("v.data", response.getReturnValue());
+            }
+        })
+        
+        $A.enqueueAction(action);
     },
     onPrevious: function(component, event, helper) {
 
@@ -138,7 +156,7 @@
         // Check if scrolled to the end
         let count=component.get("v.count");
         console.log(offSet);
-        if(offSet<count && offSet>=0){
+        if(offSet<count && offSet>=20){
             offSet -= 20; // Increase the offset value as per your requirements
 
             // Update the offset attribute
@@ -168,10 +186,11 @@
         let offSet = component.get("v.offSet");
         // Check if scrolled to the end
         let count=component.get("v.count");
+        console.log(count);
         console.log(offSet);
-        if(offSet<count){
+        if(offSet<(count-20)){
             offSet += 20; // Increase the offset value as per your requirements
-
+            console.log(offSet);
             // Update the offset attribute
             component.set("v.offSet", offSet);
             // let off=component.get("v.offSet")
@@ -191,9 +210,6 @@
             })
             
             $A.enqueueAction(action);
-        }else{
-            let data=component.get("v.data");
-            console.log(data);
         }
         
     }
