@@ -1,0 +1,59 @@
+<aura:component controller="getTableRecords" implements="force:hasRecordId,force:appHostable">
+    <!-- attributes --> 
+    <aura:attribute name="data" type="List" />
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute  name="recordId" type="String"/>
+    <aura:attribute name="offSet" type="Integer" default="0" />
+    <!-- <aura:attribute name="myInputObj" type="Object"/> -->
+    <aura:attribute name="count" type="Integer" />
+    <!-- handlers-->
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+    <aura:attribute name="isToggled" type="Boolean" default="false" />
+    <!-- <aura:handler name="change" value="{!v.myInputObj}" action="{!c.handleInputChange}"/> -->
+    <!-- <lightning:button class="slds-m-top_small"   label="new"  name="new"/> -->
+    <!-- the container element determine the height of the datatable -->
+    <!-- <div style="height: 300px; overflow-y: auto;" aura:id="scrollContainer" onscroll="{!c.handleScroll}" data-offset="{!v.offSet}"> -->
+        <!-- <lightning:button label="Toggle" variant="brand" onclick="{!c.toggleButton}" 
+                  class="{!v.isToggled ? 'toggle-on' : 'toggle-off'}" /> -->
+        <div class="slds-form-element" >
+        <label class="slds-checkbox_toggle slds-grid">
+            <span class="slds-form-element__label slds-m-bottom_none">Enable Pagination</span>
+            <input onclick="{!c.toggleButton}" type="checkbox" name="checkbox-toggle-16" value="checkbox-toggle-16" aria-describedby="checkbox-toggle-16" />
+            <span id="checkbox-toggle-16" class="slds-checkbox_faux_container" aria-live="assertive">
+            <span class="slds-checkbox_faux"></span>
+            <span class="slds-checkbox_on" >Enabled</span>
+            <span class="slds-checkbox_off" >Disabled</span>
+            </span>
+        </label>
+        </div>
+        <aura:if isTrue="{!v.isToggled}">
+            <div style="height: 500px;overflow-x: scroll;" data-offSet="{!v.offSet}" >
+
+                <lightning:datatable
+                    keyField="id"
+                    data="{! v.data }"
+                    columns="{! v.columns }"
+                    onrowaction="{!c.handleRowAction}"
+                />
+            
+            </div>
+            <lightning:button class="slds-m-top_small"  onclick="{!c.onPrevious}" label="Previous" name="Previous"/>
+            <lightning:button class="slds-m-top_small"  onclick="{!c.onNext}" label="Next" type="submit" name="Next"/>
+            <aura:set attribute="else">
+                <div style="height: 300px;overflow-x: scroll;" data-offSet="{!v.offSet}" >
+
+                    <lightning:datatable
+                    keyField="id"
+                    data="{! v.data }"
+                    columns="{! v.columns }"
+                    onrowaction="{!c.handleRowAction}"
+                    onloadmore="{!c.handleScroll}"
+                    enableInfiniteLoading="true"
+                    />
+                
+                </div>
+            </aura:set>
+        </aura:if>
+        
+</aura:component>
+

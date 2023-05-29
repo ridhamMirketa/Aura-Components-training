@@ -1,0 +1,60 @@
+<aura:component controller="AccountSchemaController" implements="flexipage:availableForRecordHome,force:hasRecordId,force:appHostable,lightning:actionOverRide">
+    <aura:attribute name="account" type="Account"  default="{ 'sobjectType': 'Account' }"/>
+    <aura:attribute name="showAnnualRevenue" type="Boolean" default="true"/>
+    <aura:attribute name="isAccountNumberRequired" type="Boolean" default="false"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <!-- <aura:attribute name="fieldInfoList" type="List" /> -->
+    <aura:attribute name="fieldInfoMap" type="Map" default="{}"/>
+    <aura:attribute name="mapEntries" type="List" />
+
+    <!-- <lightning:navigation aura:id="navService"/> -->
+
+    
+        <!-- <lightning:input aura:id="name" fieldName="Name"   />
+        <lightning:input aura:id="accountNumber" fieldName="AccountNumber" value="{!v.account.AccountNumber}" required="{!v.isAccountNumberRequired}" />
+        <lightning:input aura:id="type" fieldName="Type"  onchange="{!c.checkType}"/>
+        
+        <lightning:input aura:id="industry" fieldName="Industry" />
+    
+        <aura:if isTrue="{!v.showAnnualRevenue}">
+            <lightning:input aura:id="annualRevenue" fieldName="AnnualRevenue" />
+        </aura:if>
+        <lightning:button class="slds-m-top_small" variant="brand" type="submit" name="Save" label="Save"  /> -->
+        <!-- <aura:iteration items="{!v.fieldInfoList}" var="fieldInfo"> -->
+            <!-- <aura:if ></aura:if> -->
+            
+            <!-- <lightning:input label="{!fieldInfo.fieldLabel}" type="{!fieldInfo.fieldType}" value="" />
+        </aura:iteration> -->
+        <!-- <lightning:input aura:id="name" label="name" type="text" required="true"   />
+        <lightning:input aura:id="phone" label="Phone" type="number" required="true"  />
+        <lightning:input aura:id="address" label="Address" type="Address" required="true"/>
+        <lightning:input aura:id="email" label="email" type="email" required="true"/> -->
+        <!-- <lightning:button class="slds-m-top_small" onclick="onSubmit" variant="brand" type="submit" name="Save" 
+        label="Save"  /> -->
+      
+   
+
+    <aura:iteration items="{!v.mapEntries}" var="mapEntry">
+        
+        <aura:if isTrue="{!mapEntry.value.fieldType == 'PICKLIST'}">
+            <lightning:select aura:id="inputVal" label="{!mapEntry.value.fieldLabel}" value="{!mapEntry.value.values}" required="{!mapEntry.value.isRequired}" >
+                <aura:iteration items="{!mapEntry.value.picklistValues}" var="picklistValue">
+                    <option value="{!picklistValue}" text="{!picklistValue}" />
+                </aura:iteration>
+            </lightning:select>
+            <aura:set attribute="else">
+                <!-- Handle non-picklist field -->
+                <lightning:input aura:id="inputVal" value="{!mapEntry.value.values}" label="{!mapEntry.value.fieldLabel}" required="{!mapEntry.value.isRequired}" type="{!mapEntry.value.fieldType}"/>
+                    
+            </aura:set>
+        </aura:if>
+       
+    </aura:iteration>
+
+    <!-- <aura:iteration items="{!v.myMap}" var="mapEntry">
+        Key: {!mapEntry.key}, Value: {!mapEntry.value.key}, {!mapEntry.value.value}
+    </aura:iteration> -->
+
+
+        <lightning:button class="slds-m-top_small"  onclick="{!c.onSubmit}" label="submit" type="submit" name="Save"/>
+</aura:component>

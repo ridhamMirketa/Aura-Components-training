@@ -1,8 +1,10 @@
 <aura:application extends="force:slds">
-    <c:myComponent></c:myComponent>
+    <!-- <c:myComponent></c:myComponent> -->
     <!-- <c:myComponent_event></c:myComponent_event> -->
     <!-- <c:myComponent_eventApplication></c:myComponent_eventApplication> -->
     <!-- <c:myComponentMethod></c:myComponentMethod> -->
     <!-- <c:ldsDemo></c:ldsDemo> -->
     <!-- <c:DisplayAccountTable></c:DisplayAccountTable> -->
+    <!-- <c:FormUsingSchemaClass></c:FormUsingSchemaClass> -->
+    <c:myComponentUsingSchemaClass></c:myComponentUsingSchemaClass>
 </aura:application>

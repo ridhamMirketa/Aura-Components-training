@@ -1,0 +1,4 @@
+<aura:component implements="force:hasRecordId,force:appHostable">
+<c:FormUsingSchemaClass></c:FormUsingSchemaClass>
+<c:TableUsingSchemaClass></c:TableUsingSchemaClass>
+</aura:component>	
